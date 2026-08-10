@@ -53,6 +53,26 @@
   @media (max-width: 900px) {
     [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
     [data-sticky] { position: static !important; }
+    /* The All Ears mosaic keeps two columns on phones. Collapsing it to one
+       made six full-bleed photos in a row and a very long scroll, and the
+       staggered column offset then read as an uneven gap. */
+    [data-gallery] { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+    /* Dissolve the three column wrappers so the photos themselves become the
+       grid items — otherwise the third column wraps under the first and the
+       mosaic ends up 4 photos one side, 2 the other. */
+    [data-gallery] > div { display: contents !important; }
+    [data-caption-row] { flex-direction: column !important; gap: 6px !important; }
+  }
+  /* The hero float field stays on small screens — the tiles shrink instead of
+     being dropped, and the section grows so there are bands above and below
+     the headline for them to settle into. */
+  @media (max-width: 1100px) {
+    [data-float-field] [data-phys] { width: clamp(78px, 23vw, 132px) !important; }
+    [data-float-field] [data-phys] > div:last-child { font-size: 9.5px !important; margin-top: 5px !important; }
+    #top { min-height: 128vh !important; padding-top: 96px !important; }
+  }
+  @media (max-width: 430px) {
+    [data-float-field] [data-phys] { width: clamp(68px, 21vw, 104px) !important; }
   }
   /* --step is the gap between cards as a % of the STACK width. translate() resolves
      percentages against the card's own width, so divide by --cw to convert. */
@@ -79,7 +99,7 @@
 
   <section id="top" data-screen-label="Hero" style="position: relative; min-height: 108vh; display: flex; align-items: center; padding: 120px clamp(20px, 5vw, 56px) 60px;">
     <div style="position: absolute; inset: -15%; z-index: 0; pointer-events: none; filter: blur(80px); background: radial-gradient(40% 44% at 26% 32%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%), radial-gradient(36% 40% at 74% 70%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%); animation: heroGlow 22s ease-in-out infinite alternate;"></div>
-    <div ref="{{ fieldRef }}" data-float-hide style="position: absolute; inset: 0; z-index: 1; overflow: hidden;">
+    <div ref="{{ fieldRef }}" data-float-field style="position: absolute; inset: 0; z-index: 1; overflow: hidden;">
       <div data-phys="0.10,0.06,140,-4" style="position: absolute; width: clamp(120px, 13vw, 220px); will-change: transform;">
         <div class="lighten"><img src="https://allears.nz/events/twominds26-1.webp" alt="Twominds Flux Stage" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Twominds · lasers &amp; LED</div>
@@ -112,7 +132,7 @@
         <img src="assets/studio-site.jpg" alt="studio.unit20.nz" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Unit 20 Studios · bookable studio</div>
       </div>
-      <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
+      <div data-phys="0.44,0.88,110,-3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
         <img src="assets/code-editor.jpg" alt="Unit 20 codebase in the editor" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: left top; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the code underneath</div>
       </div>
@@ -149,7 +169,7 @@
       </p>
     </div>
 
-    <div data-grid style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: clamp(32px, 5vw, 56px);">
+    <div data-grid data-gallery style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: clamp(32px, 5vw, 56px);">
       <div style="display: flex; flex-direction: column; gap: 16px; animation: colUp linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
         <img src="assets/crew-marquee.jpg" alt="All Ears crew mixing front of house" style="display: block; width: 100%; border-radius: var(--radius-md);">
         <div class="lighten"><img src="https://allears.nz/events/oursound23.webp" alt="Our Sound production" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
@@ -163,7 +183,7 @@
         <img src="assets/cellar-circle.jpg" alt="Cellar Circle in the trees" style="display: block; width: 100%; border-radius: var(--radius-md);">
       </div>
     </div>
-    <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 11px; color: var(--color-neutral-400);">
+    <div data-caption-row style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 11px; color: var(--color-neutral-400);">
       <span>The crew · Our Sound · HIIT for Hope · Kathryn Wilson · Breast Cancer Cure · Cellar Circle</span>
       <span>photos from allears.nz</span>
     </div>
@@ -343,7 +363,7 @@
     <div style="position: relative; z-index: 1;">
       <h2 style="font-size: clamp(40px, 7vw, 104px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 500; margin: 0; max-width: 12ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% entry 90%;">Let's build something<span style="color: var(--accent);">.</span></h2>
       <p style="font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: var(--color-neutral-200); max-width: 48ch; margin: 22px 0 0; text-wrap: pretty;">
-        Looking for a graduate software engineering role where the messy, real-world version of the problem is the interesting part: operations, logistics, hardware, live events.
+        Looking for a software engineering role where the messy, real-world version of the problem is the interesting part: operations, logistics, hardware, live events.
       </p>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px;">
         <a href="{{ emailHref }}" class="btn btn-primary" style="font-size: 15px; padding: 12px 22px;">{{ email }}</a>
@@ -378,10 +398,9 @@ class Component extends DCLogic {
       el.style.top = (fy * 100) + '%';
       el.style.transform = 'translate(-50%, -50%)';
     }
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const els = Array.from(field.querySelectorAll('[data-phys]'));
     let seeded = true; // until first tick, keep %-based left/top seeding
-    let W = 0, H = 0, bodies = [], zone = null;
+    let W = 0, H = 0, bodies = [], zone = null, wideZone = false;
     const content = field.parentElement.querySelector('[data-hero-copy]');
     const measure = () => {
       const r = field.getBoundingClientRect();
@@ -389,6 +408,8 @@ class Component extends DCLogic {
       if (content) {
         const c = content.getBoundingClientRect();
         zone = { x1: c.left - r.left, y1: c.top - r.top, x2: c.right - r.left, y2: c.bottom - r.top };
+        // when the copy fills the width there is no room either side of it
+        wideZone = (zone.x2 - zone.x1) > W * 0.66;
       }
       bodies = els.map((el, i) => {
         const [fx, fy, rad, rot] = el.dataset.phys.split(',').map(Number);
@@ -397,9 +418,25 @@ class Component extends DCLogic {
           vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
           placed: true
         };
-        b.el = el; b.r = Math.min(rad, W * 0.09); b.rot = rot;
+        // never let the collision radius fall below the tile's own size, or the
+        // small phone layout packs them into overlapping piles with the
+        // captions sitting on top of each other
+        b.el = el; b.fx = fx; b.r = Math.min(rad, Math.max(W * 0.09, el.offsetWidth * 0.5, el.offsetHeight * 0.42)); b.rot = rot;
         let hx = fx * W, hy = Math.max(fy * H, (el.offsetHeight / 2) + 80);
-        if (zone) {
+        if (zone && wideZone) {
+          // Phone layout: the copy spans nearly the full width, so there is no
+          // safe band beside it. Park each tile above or below the text instead
+          // and keep it there.
+          const half = el.offsetHeight / 2;
+          const topLo = half + 70, topHi = zone.y1 - half - 10;
+          const botLo = zone.y2 + half + 10, botHi = H - half - 6;
+          const useTop = fy < 0.5 && topHi > topLo;
+          b.bandName = useTop ? 'top' : 'bot';
+          b.band = useTop ? [topLo, topHi] : [Math.min(botLo, botHi), Math.max(botLo, botHi)];
+          hy = Math.max(b.band[0], Math.min(hy, b.band[1]));
+          hx = Math.max(b.r, Math.min(hx, W - b.r));
+        } else if (zone) {
+          b.band = null;
           // project home to nearest safe band outside the inflated text rect
           const m = b.r * 0.7 + 16;
           if (hx > zone.x1 - m && hx < zone.x2 + m && hy > zone.y1 - m && hy < zone.y2 + m) {
@@ -414,10 +451,54 @@ class Component extends DCLogic {
         b.hx = hx; b.hy = hy;
         return b;
       });
+      if (wideZone) {
+        // The authored positions were laid out for a wide desktop hero and
+        // bunch up at phone width, so space each band's tiles evenly instead,
+        // wrapping to a second row only when the band is tall enough.
+        const groups = { top: [], bot: [] };
+        for (const b of bodies) groups[b.bandName || 'bot'].push(b);
+        for (const key of ['top', 'bot']) {
+          const g = groups[key];
+          if (!g.length) continue;
+          // Hand out slots left to right. Assigning them in DOM order sends
+          // tiles across each other and two of them deadlock mid-swap.
+          g.sort((p, q) => p.fx - q.fx);
+          const tileW = g[0].el.offsetWidth + 8;
+          const perRow = Math.max(2, Math.min(g.length, Math.floor(W / tileW)));
+          const rows = Math.ceil(g.length / perRow);
+          const [lo, hi] = g[0].band;
+          const fits = (hi - lo) > g[0].el.offsetHeight * (rows - 1);
+          g.forEach((b, k) => {
+            const row = fits ? Math.floor(k / perRow) : 0;
+            const col = fits ? k % perRow : k;
+            const n = fits ? Math.min(perRow, g.length - row * perRow) : g.length;
+            b.hx = Math.max(b.r, Math.min(((col + 0.5) / n) * W, W - b.r));
+            b.hy = (fits && rows > 1) ? lo + (hi - lo) * ((row + 0.5) / rows) : (lo + hi) / 2;
+          });
+        }
+      }
     };
     measure();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // No animation for these visitors, but the raw seed positions overlap at
+      // phone width — drop each tile straight onto its computed home instead
+      // and leave it there.
+      for (const b of bodies) {
+        b.el.style.left = '0'; b.el.style.top = '0';
+        b.el.style.transform = `translate(${b.hx - b.el.offsetWidth / 2}px, ${b.hy - b.el.offsetHeight / 2}px) rotate(${b.rot}deg)`;
+      }
+      return;
+    }
     this._onResize = measure;
     window.addEventListener('resize', this._onResize);
+    // Tile heights are only final once the images decode, and the bands are
+    // derived from them — measuring once on mount leaves tiles sized against
+    // empty boxes and parked outside their band.
+    this._onLoad = () => measure();
+    window.addEventListener('load', this._onLoad);
+    for (const el of els) for (const img of el.querySelectorAll('img')) {
+      if (!img.complete) img.addEventListener('load', this._onLoad, { once: true });
+    }
     const mouse = { x: -9999, y: -9999 };
     const lastM = { x: -9999, y: -9999 };
     const mv = { x: 0, y: 0 }; // smoothed mouse velocity
@@ -429,18 +510,67 @@ class Component extends DCLogic {
     const sect = field.parentElement;
     sect.addEventListener('mousemove', this._onMove);
     sect.addEventListener('mouseleave', this._onLeave);
+    // touch: a dragged finger shoves tiles the same way the cursor does
+    this._onTouch = (e) => {
+      const t = e.touches && e.touches[0];
+      if (!t) return;
+      const r = field.getBoundingClientRect();
+      mouse.x = t.clientX - r.left; mouse.y = t.clientY - r.top;
+    };
+    sect.addEventListener('touchstart', this._onTouch, { passive: true });
+    sect.addEventListener('touchmove', this._onTouch, { passive: true });
+    sect.addEventListener('touchend', this._onLeave, { passive: true });
+    sect.addEventListener('touchcancel', this._onLeave, { passive: true });
+
+    // device tilt: gamma is left/right, beta is front/back. Held at a natural
+    // reading angle beta sits near 50deg, so that's the neutral point.
+    const tilt = { x: 0, y: 0 };
+    this._onTilt = (e) => {
+      if (e.gamma == null || e.beta == null) return;
+      const gx = Math.max(-1, Math.min(1, e.gamma / 40));
+      const gy = Math.max(-1, Math.min(1, (e.beta - 50) / 40));
+      tilt.x += (gx - tilt.x) * 0.12;
+      tilt.y += (gy - tilt.y) * 0.12;
+    };
+    const startTilt = () => window.addEventListener('deviceorientation', this._onTilt);
+    const hasTilt = typeof window.DeviceOrientationEvent !== 'undefined';
+    const needsGrant = hasTilt && typeof window.DeviceOrientationEvent.requestPermission === 'function';
+    if (hasTilt && !needsGrant && matchMedia('(hover: none)').matches) startTilt();
+    if (needsGrant) {
+      // iOS only hands out motion access from a real user gesture, so this
+      // cannot be requested on load — it has to be a tap.
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = 'Tilt to move the photos';
+      btn.setAttribute('style', 'position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 5; pointer-events: auto; font: inherit; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--color-text); background: color-mix(in srgb, var(--color-bg) 70%, transparent); backdrop-filter: blur(10px); border: 1px solid var(--color-neutral-600); border-radius: 999px; padding: 9px 16px; cursor: pointer;');
+      btn.addEventListener('click', () => {
+        Promise.resolve(window.DeviceOrientationEvent.requestPermission()).then((res) => {
+          if (res === 'granted') { startTilt(); btn.remove(); }
+          else { btn.textContent = 'Motion access denied'; setTimeout(() => btn.remove(), 2200); }
+        }).catch(() => btn.remove());
+      });
+      sect.appendChild(btn);
+      this._tiltBtn = btn;
+    }
     // per-body wander phase + parallax factor
     bodies.forEach((b, i) => {
       b.ph = Math.random() * Math.PI * 2;
       b.w1 = 0.00035 + Math.random() * 0.0003;
       b.w2 = 0.0004 + Math.random() * 0.0003;
       b.pf = ((i % 5) - 2) * 0.045;
+      b.sd = 0.6 + Math.random() * 0.8; // how hard a scroll flick drags this one
     });
     let last = performance.now();
+    let lastSy = window.scrollY || 0, scrollV = 0;
     const tick = (now) => {
       this._raf = requestAnimationFrame(tick);
       if (seeded) { seeded = false; for (const el of els) { el.style.left = '0'; el.style.top = '0'; } }
       const dt = Math.min((now - last) / 16.67, 3); last = now;
+      // smoothed, capped scroll velocity — a flick disturbs the field and the
+      // home spring settles it again
+      const sy = window.scrollY || 0;
+      scrollV += ((sy - lastSy) - scrollV) * 0.25; lastSy = sy;
+      scrollV = Math.max(-70, Math.min(70, scrollV));
       // smoothed mouse velocity (for brush-past pushes)
       if (lastM.x > -9000 && mouse.x > -9000) {
         mv.x += ((mouse.x - lastM.x) - mv.x) * 0.18;
@@ -448,12 +578,23 @@ class Component extends DCLogic {
       } else { mv.x *= 0.9; mv.y *= 0.9; }
       lastM.x = mouse.x; lastM.y = mouse.y;
       for (const b of bodies) {
-        // gentle pull back toward home spot
-        b.vx += (b.hx - b.x) * 0.00012 * dt;
-        b.vy += (b.hy - b.y) * 0.00012 * dt;
-        // ambient wander — slow autonomous drift
-        b.vx += Math.sin(now * b.w1 + b.ph) * 0.010 * dt;
-        b.vy += Math.cos(now * b.w2 + b.ph * 1.7) * 0.012 * dt;
+        // Pull back toward the home spot. On phones the tiles are packed much
+        // closer, so the desktop-weight spring loses to collisions and they
+        // never reach their slots — hold them far more firmly there.
+        // Scroll and tilt move where a tile *wants* to sit rather than shoving
+        // it directly. Applied as raw forces, a sustained scroll or a held
+        // tilt beats the spring and piles every tile into one corner; as a
+        // bounded offset the whole field shifts and keeps its spacing.
+        const drag = Math.max(-40, Math.min(40, scrollV));
+        const offX = tilt.x * 26 * b.sd;
+        const offY = (tilt.y * 26 - drag * 1.2) * b.sd;
+        const k = wideZone ? 0.0012 : 0.00012;
+        b.vx += (b.hx + offX - b.x) * k * dt;
+        b.vy += (b.hy + offY - b.y) * k * dt;
+        // ambient wander — slow autonomous drift, damped down when packed
+        const wob = wideZone ? 1.2 : 1;
+        b.vx += Math.sin(now * b.w1 + b.ph) * 0.010 * wob * dt;
+        b.vy += Math.cos(now * b.w2 + b.ph * 1.7) * 0.012 * wob * dt;
         // mouse: pushed by cursor motion (not repelled) — soft directional shove
         const dx = b.x - mouse.x, dy = b.y - mouse.y;
         const d2 = dx * dx + dy * dy, rr = b.r + 170;
@@ -467,7 +608,7 @@ class Component extends DCLogic {
           b.vx += (dx / d) * f; b.vy += (dy / d) * f;
         }
         // push out of the text exclusion zone
-        if (zone) {
+        if (zone && !b.band) {
           const m = b.r * 0.6;
           const nx0 = Math.max(zone.x1 - m, Math.min(b.x, zone.x2 + m));
           const ny0 = Math.max(zone.y1 - m, Math.min(b.y, zone.y2 + m));
@@ -490,15 +631,25 @@ class Component extends DCLogic {
         const topWall = (b.el.offsetHeight / 2) + 70;
         if (b.y < topWall) { b.y = topWall; b.vy = Math.abs(b.vy) * 0.7; }
         if (b.y > H - b.r) { b.y = H - b.r; b.vy = -Math.abs(b.vy) * 0.7; }
+        // keep phone-layout tiles inside their band so the copy stays readable
+        if (b.band) {
+          if (b.y < b.band[0]) { b.y = b.band[0]; b.vy = Math.abs(b.vy) * 0.6; }
+          if (b.y > b.band[1]) { b.y = b.band[1]; b.vy = -Math.abs(b.vy) * 0.6; }
+        }
       }
       // pairwise collisions
       for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) {
         const a = bodies[i], c = bodies[j];
         const dx = c.x - a.x, dy = c.y - a.y;
         const min = (a.r + c.r) * 0.9, d2 = dx * dx + dy * dy;
-        if (d2 < min * min && d2 > 1) {
-          const d = Math.sqrt(d2), nx = dx / d, ny = dy / d;
-          const push = (min - d) * 0.04;
+        if (d2 < min * min) {
+          // Two bodies sitting on the exact same spot give d2 === 0, and a
+          // normal of 0/0 welds them together permanently. Break the tie on a
+          // fixed axis so they always separate.
+          let d = Math.sqrt(d2), nx, ny;
+          if (d < 0.01) { d = 0.01; nx = (i % 2) ? 0 : 1; ny = (i % 2) ? 1 : 0; }
+          else { nx = dx / d; ny = dy / d; }
+          const push = (min - d) * (wideZone ? 0.14 : 0.04);
           a.x -= nx * push; a.y -= ny * push; c.x += nx * push; c.y += ny * push;
           const rvx = c.vx - a.vx, rvy = c.vy - a.vy, sep = rvx * nx + rvy * ny;
           if (sep < 0) {
@@ -507,7 +658,6 @@ class Component extends DCLogic {
           }
         }
       }
-      const sy = window.scrollY || 0;
       for (const b of bodies) {
         const w = b.el.offsetWidth || 1;
         b.el.style.transform = `translate(${b.x - w / 2}px, ${b.y - b.el.offsetHeight / 2 + sy * b.pf}px) rotate(${b.rot + b.vx * 1.4}deg)`;
@@ -518,6 +668,9 @@ class Component extends DCLogic {
   componentWillUnmount() {
     cancelAnimationFrame(this._raf);
     window.removeEventListener('resize', this._onResize);
+    if (this._onLoad) window.removeEventListener('load', this._onLoad);
+    if (this._onTilt) window.removeEventListener('deviceorientation', this._onTilt);
+    if (this._tiltBtn) this._tiltBtn.remove();
   }
   renderVals() {
     const vals = this.renderVals2();
