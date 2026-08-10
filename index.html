@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Will Thompson · Software engineer &amp; event production, Christchurch NZ</title>
+<meta name="description" content="Will Thompson: software engineer (BE(Hons), University of Canterbury), founder of All Ears Events, and sole developer of All Ears Crew, the Unit 20 ticketing platform and the studio booking site.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-fb872975-26c8-4070-9c8d-bc7d8c0b8985/styles.css">
+<script src="_ds/nocturne-fb872975-26c8-4070-9c8d-bc7d8c0b8985/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  :root {
+    --accent: #9184d9;
+    --accent-soft: #c9c0f2;
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+  a { color: var(--color-accent); text-decoration: none; }
+  a:hover { color: var(--color-accent-300); }
+  @keyframes float1 { from { transform: translateY(90px) rotate(-4deg); } to { transform: translateY(-90px) rotate(-4deg); } }
+  @keyframes float2 { from { transform: translateY(-70px) rotate(3deg); } to { transform: translateY(70px) rotate(3deg); } }
+  @keyframes float3 { from { transform: translateY(130px) rotate(2deg); } to { transform: translateY(-130px) rotate(2deg); } }
+  @keyframes float4 { from { transform: translateY(-50px) rotate(-2.5deg); } to { transform: translateY(50px) rotate(-2.5deg); } }
+  @keyframes float5 { from { transform: translateY(60px) rotate(6deg); } to { transform: translateY(-60px) rotate(6deg); } }
+  @keyframes colUp { from { transform: translateY(70px); } to { transform: translateY(-70px); } }
+  @keyframes colDown { from { transform: translateY(-70px); } to { transform: translateY(70px); } }
+  @keyframes pop { from { opacity: 0; transform: translateY(36px) scale(0.96); } to { opacity: 1; transform: none; } }
+  @keyframes popSm { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes tickL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes tickR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes gradText { to { background-position: -300% 0; } }
+  @keyframes heroGlow {
+    0% { transform: translate(-6%, -4%) scale(1); opacity: 0.5; }
+    50% { transform: translate(5%, 6%) scale(1.12); opacity: 0.72; }
+    100% { transform: translate(-4%, 3%) scale(1.02); opacity: 0.55; }
+  }
+  @media (max-width: 1200px) {
+    [data-float-wide] { display: none !important; }
+  }
+  @media (max-width: 1100px) {
+    [data-float-hide] { display: none !important; }
+  }
+  @media (max-width: 900px) {
+    [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
+    [data-sticky] { position: static !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="background: var(--color-bg); overflow-x: hidden;">
+
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; display: flex; align-items: center; gap: 20px; padding: 14px clamp(20px, 5vw, 56px); background: color-mix(in srgb, var(--color-bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-neutral-800);">
+    <a href="#top" style="font-family: var(--font-heading); font-weight: 500; font-size: 15px; color: var(--color-text); margin-right: auto; display: flex; align-items: center; gap: 10px;">
+      <span style="width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); display: inline-block;"></span>
+      Will Thompson
+    </a>
+    <div style="display: flex; gap: clamp(10px, 2vw, 24px); font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em;">
+      <a href="#unit20" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">Unit 20</a>
+      <a href="#allears" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">All Ears</a>
+      <a href="#software" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">Software</a>
+      <a href="#crew" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">The app</a>
+      <a href="#cv" class="btn btn-primary" style="padding: 6px 14px; font-size: 12.5px;">CV ↓</a>
+    </div>
+  </div>
+
+  <section id="top" data-screen-label="Hero" style="position: relative; min-height: 108vh; display: flex; align-items: center; padding: 120px clamp(20px, 5vw, 56px) 60px;">
+    <div style="position: absolute; inset: -15%; z-index: 0; pointer-events: none; filter: blur(80px); background: radial-gradient(40% 44% at 26% 32%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%), radial-gradient(36% 40% at 74% 70%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%); animation: heroGlow 22s ease-in-out infinite alternate;"></div>
+    <div ref="{{ fieldRef }}" data-float-hide style="position: absolute; inset: 0; z-index: 1; overflow: hidden;">
+      <div data-phys="0.10,0.06,140,-4" style="position: absolute; width: clamp(120px, 13vw, 220px); will-change: transform;">
+        <div class="lighten"><img src="https://allears.nz/events/twominds26-1.webp" alt="Twominds Flux Stage" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Twominds · lasers &amp; LED</div>
+      </div>
+      <div data-phys="0.78,0.05,150,3" style="position: absolute; width: clamp(130px, 14vw, 240px); will-change: transform;">
+        <div class="lighten"><img src="https://allears.nz/events/concarne4.webp" alt="ConCarne Wild Horses" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">ConCarne · lighting &amp; FX</div>
+      </div>
+      <div data-phys="0.05,0.62,120,2" style="position: absolute; width: clamp(110px, 11vw, 190px); will-change: transform;">
+        <div class="lighten"><img src="https://allears.nz/events/rvsitelighting.webp" alt="Rhythm and Vines site lighting" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">R&amp;V · site lighting</div>
+      </div>
+      <div data-phys="0.86,0.60,140,-3" style="position: absolute; width: clamp(120px, 13vw, 220px); will-change: transform;">
+        <div class="lighten"><img src="https://allears.nz/events/flowdanchch6.webp" alt="Flowdan NZ tour" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Flowdan · full production</div>
+      </div>
+      <div data-phys="0.30,0.04,130,2" style="position: absolute; width: clamp(130px, 14vw, 240px); will-change: transform;">
+        <img src="assets/shot-a.png" alt="allears.nz website" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">allears.nz · built and run by me</div>
+      </div>
+      <div data-phys="0.55,0.72,150,-2" style="position: absolute; width: clamp(140px, 15vw, 260px); will-change: transform;">
+        <img src="assets/shot-b.png" alt="All Ears Crew app" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">All Ears Crew · the app</div>
+      </div>
+      <div data-phys="0.94,0.32,110,4" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
+        <img src="assets/unit20-site.jpg" alt="unit20.nz ticketing site" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">unit20.nz · ticketing, built solo</div>
+      </div>
+      <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
+        <img src="assets/studio-site.jpg" alt="studio.unit20.nz" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">studio.unit20.nz · studio bookings</div>
+      </div>
+      <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
+        <img src="assets/code-editor.jpg" alt="Unit 20 codebase in the editor" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: left top; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the code underneath</div>
+      </div>
+      <div data-phys="0.45,0.90,100,-3" style="position: absolute; width: clamp(90px, 9vw, 160px); will-change: transform;">
+        <image-slot id="hero-uni" shape="rounded" radius="8" style="width: 100%; aspect-ratio: 16/10;" placeholder="Uni project screenshot"></image-slot>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">SENG302 · university build</div>
+      </div>
+    </div>
+
+    <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; pointer-events: none;">
+    <div data-hero-copy style="display: inline-block; max-width: 100%;">
+      <div style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--color-neutral-700); border-radius: 999px; padding: 8px 16px; font-size: 12.5px; color: var(--color-neutral-200); pointer-events: auto; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 50%;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent);"></span>
+        Christchurch, NZ · software engineer · founder
+      </div>
+      <h1 style="font-size: clamp(42px, 7.6vw, 118px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 500; margin: 26px 0 0; max-width: 14ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">
+        I run shows.<br>
+        I write the <span style="background: linear-gradient(90deg, var(--accent), var(--accent-soft), var(--accent)); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradText 12s linear infinite;">software</span><br>
+        that runs them.
+      </h1>
+      <p style="font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: var(--color-neutral-200); max-width: 52ch; margin: 26px 0 0; text-wrap: pretty; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 6%;">
+        Will Thompson, founder of <a href="#allears" style="color: var(--accent); pointer-events: auto;">All Ears Events</a>, operator of the <a href="#unit20" style="color: var(--accent); pointer-events: auto;">Unit 20</a> warehouse &amp; studios, and sole developer of <a href="#crew" style="color: var(--accent); pointer-events: auto;">All Ears Crew</a>, the Unit 20 ticketing platform and the studio booking site that run it all.
+      </p>
+      <div style="display: flex; align-items: center; gap: 14px; margin-top: 34px; pointer-events: auto; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 8%;">
+        <a href="#unit20" class="btn btn-primary">Take the tour</a>
+        <a href="#cv" class="btn btn-ghost">Download CV</a>
+      </div>
+    </div>
+    </div>
+
+    <div style="position: absolute; bottom: 22px; left: 50%; translate: -50% 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-400); animation: bob 2.6s ease-in-out infinite;">Scroll ↓</div>
+  </section>
+
+  <div style="border-top: 1px solid var(--color-neutral-800); border-bottom: 1px solid var(--color-neutral-800);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 40px;">
+      <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400);">Selected work</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px 32px; font-size: 14px; color: var(--color-neutral-200);">
+        <span>Rhythm &amp; Vines</span><span>Red Bull</span><span>George FM</span><span>Flowdan</span><span>Twominds</span><span>Our Sound</span><span>Kathryn Wilson</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="unit20" data-screen-label="Unit 20" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The HQ</div>
+    <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 18px 0 0; max-width: 18ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">Unit 20, a warehouse that runs itself.</h2>
+    <div data-grid style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); margin-top: clamp(28px, 4vw, 48px); align-items: start;">
+      <div>
+        <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 0; text-wrap: pretty;">
+          Warehouse, workshop, event space and bookable studios. It's the base every show packs out of, and the proving ground for everything I build: customers schedule their own pickups and the door unlocks itself with a time-boxed code, labels print unattended in the workshop, and a wall display shows the crew what's leaving today.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0; margin-top: 28px; border-top: 1px solid var(--color-neutral-800);">
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 18%;">
+            <div><strong style="font-weight: 600;">Self-service dry hire.</strong> <span style="color: var(--color-neutral-300);">Pick a time online, get a door code by email, collect your gear. A customer can pick up at 7am on a Sunday with nobody on site.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 22%;">
+            <div><strong style="font-weight: 600;">Unit 20 Studios.</strong> <span style="color: var(--color-neutral-300);">A DJ practice studio booked online at studio.unit20.nz. Pay, verify your ID once, and your door code arrives automatically.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+            <div><strong style="font-weight: 600;">Unit 20 Live.</strong> <span style="color: var(--color-neutral-300);">Ticketing for our own shows at unit20.nz. Card payments, QR check-in, pre-sale ballots and a full admin dashboard, with $54,000+ in payments processed to date.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 26%;">
+            <div><strong style="font-weight: 600;">One shared system.</strong> <span style="color: var(--color-neutral-300);">The studio and the AV company share one database, so the studio calendar automatically refuses bookings on days the decks are out on a show.</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="position: relative; min-height: 480px;">
+        <div style="position: absolute; top: 0; left: 0; width: 62%; rotate: -3deg; z-index: 2; animation: float2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <img src="assets/unit20-building.jpg" alt="The Unit 20 building on Southwark Street" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;">
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Unit 20, Southwark Street</div>
+        </div>
+        <div style="position: absolute; top: 34%; right: 0; width: 52%; rotate: 2.5deg; z-index: 3; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <image-slot id="u20-lock" shape="rounded" radius="10" style="width: 100%; aspect-ratio: 1/1;" placeholder="The smart lock / door code moment"></image-slot>
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px; text-align: right;">The door that opens itself</div>
+        </div>
+        <div style="position: absolute; bottom: 0; left: 8%; width: 48%; rotate: 1.5deg; z-index: 1; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <img src="assets/studio-room.jpg" alt="Unit 20 Studios DJ room" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 60%; border-radius: 10px;">
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Studios</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="allears" data-screen-label="All Ears" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The shows</div>
+    <div data-grid style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 4vw, 64px); margin-top: 18px; align-items: end;">
+      <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 0; max-width: 16ch;  animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">All Ears Events. Sound, lighting and full production.</h2>
+      <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 0 0 8px; text-wrap: pretty;">
+        Founded March 2024. From school balls to festival stages, including Rhythm and Vines, Red Bull, GeorgeFM, Flowdan and Twominds, with a crew roster, a truck and a compliance trail for every job. <a href="https://allears.nz" style="color: var(--accent);">allears.nz ↗</a>
+      </p>
+    </div>
+
+    <div data-grid style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: clamp(32px, 5vw, 56px);">
+      <div style="display: flex; flex-direction: column; gap: 16px; animation: colUp linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+        <div class="lighten"><img src="https://allears.nz/events/rvgarden20252.webp" alt="R&amp;V Garden Stage" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <div class="lighten"><img src="https://allears.nz/events/oursound23.webp" alt="Our Sound production" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 40px; animation: colDown linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+        <div class="lighten"><img src="https://allears.nz/events/h4h4.webp" alt="HIIT for Hope broadcast stage" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <div class="lighten"><img src="https://allears.nz/events/ayrburn10.webp" alt="Kathryn Wilson, Stilettos in the Vines" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; animation: colUp linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+        <div class="lighten"><img src="https://allears.nz/events/redbullwfl26.webp" alt="Red Bull WFL World Run" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <div class="lighten"><img src="https://allears.nz/events/lads25run2.webp" alt="Run72 site lighting" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+      </div>
+    </div>
+    <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 11px; color: var(--color-neutral-400);">
+      <span>R&amp;V · Our Sound · HIIT for Hope · Kathryn Wilson · Red Bull · Run72</span>
+      <span>photos from allears.nz</span>
+    </div>
+  </section>
+
+  <section id="software" data-screen-label="Software engineering" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The degree</div>
+    <div data-grid style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); margin-top: 18px; align-items: start;">
+      <div>
+        <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 0; max-width: 14ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">The degree behind the business.</h2>
+        <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 22px 0 0; max-width: 50ch; text-wrap: pretty;">
+          BE(Hons) in Software Engineering at the University of Canterbury, class of 2026. A full year of Agile team development on SENG302, building Java and Spring APIs with a React frontend, CI/CD and BDD testing. My final-year research project is an AI document pipeline that automates anti-money-laundering compliance review for law firms: OCR with human-in-the-loop verification, entity extraction where every claim links back to its source page, and cross-document matching. In expert-rated testing it processed documents 36 to 60 times faster than manual review. The same discipline runs through everything I ship: typed Python and TypeScript, versioned database migrations, and CI checks on every push.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px;">
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">TypeScript</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">Java + Spring</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">Python</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">React</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">Postgres / SQL</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">C / C#</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">Agile / Scrum</span>
+          <span class="tag tag-outline" style="border-color: var(--color-neutral-700); color: var(--color-neutral-200);">CI/CD · TDD</span>
+        </div>
+      </div>
+      <div style="display: grid; gap: 14px;">
+        <div class="card elev-sm" style="padding: 20px; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 16%;">
+          <div class="card-kicker" style="color: var(--accent);">2022 to 2026</div>
+          <div class="card-title" style="font-weight: 500;">BE(Hons) Software Engineering, University of Canterbury</div>
+          <div class="card-body" style="color: var(--color-neutral-300);">Class of 2026. Class rep for COSC131 and COSC265.</div>
+        </div>
+        <div class="card elev-sm" style="padding: 20px; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 20%;">
+          <div class="card-kicker" style="color: var(--accent);">Dec 2024 to Oct 2025</div>
+          <div class="card-title" style="font-weight: 500;">Systems Technician, Gravity Events</div>
+          <div class="card-body" style="color: var(--color-neutral-300);">sACN/Art-Net networks across festival stages (R&amp;V, TwoMinds, Electric Avenue); custom Arduino strobe controller with Resolume.</div>
+        </div>
+        <div class="card elev-sm" style="padding: 20px; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+          <div class="card-kicker" style="color: var(--accent);">Apr 2022 to Feb 2024</div>
+          <div class="card-title" style="font-weight: 500;">Lighting &amp; Sound Tech, UCSA Haere-roa</div>
+          <div class="card-body" style="color: var(--color-neutral-300);">Lighting design and console programming for touring artists.</div>
+        </div>
+        <div class="card elev-sm" style="padding: 20px; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 28%;">
+          <div class="card-kicker" style="color: var(--accent);">Oct 2023 to present</div>
+          <div class="card-title" style="font-weight: 500;">Events &amp; Marketing, Sub180 Entertainment</div>
+          <div class="card-body" style="color: var(--color-neutral-300);">Leading a student marketing team for NZ tours, plus artist logistics.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="crew" data-screen-label="All Ears Crew app" style="position: relative; margin-top: clamp(80px, 12vh, 150px); background: linear-gradient(180deg, var(--color-section, #232059), color-mix(in srgb, var(--color-bg) 88%, var(--accent))); border-top: 1px solid var(--color-neutral-700); border-bottom: 1px solid var(--color-neutral-700);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: clamp(64px, 10vh, 130px) clamp(20px, 5vw, 56px);">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">The app</div>
+      <h2 style="font-size: clamp(36px, 6.4vw, 92px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 500; margin: 18px 0 0; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 14%;">All Ears Crew<span style="color: var(--accent);">.</span></h2>
+      <p style="font-size: clamp(15px, 1.4vw, 20px); line-height: 1.55; color: var(--color-neutral-100); max-width: 56ch; margin: 20px 0 0; text-wrap: pretty;">
+        Started as a job board for the crew. Now it runs the company: quoting, scheduling, safety paperwork, warehouse labels, self-service pickups and a client portal. Built solo, in production every day at <strong>crew.allears.nz</strong>.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(18px, 4vw, 48px); margin-top: 26px;">
+        <div><div style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; color: var(--accent);">39,500</div><div style="font-size: 12px; color: var(--color-neutral-300); margin-top: 2px;">lines of TypeScript</div></div>
+        <div><div style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; color: var(--accent);">91</div><div style="font-size: 12px; color: var(--color-neutral-300); margin-top: 2px;">database migrations</div></div>
+        <div><div style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; color: var(--accent);">213</div><div style="font-size: 12px; color: var(--color-neutral-300); margin-top: 2px;">row-level security policies</div></div>
+        <div><div style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; color: var(--accent);">15</div><div style="font-size: 12px; color: var(--color-neutral-300); margin-top: 2px;">serverless functions</div></div>
+      </div>
+
+      <div data-grid style="display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); margin-top: clamp(36px, 5vw, 64px); align-items: start;">
+        <div style="position: relative;">
+          <div style="rotate: -1.6deg; animation: float2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+            <img src="assets/shot-b.png" alt="All Ears Crew, the job board" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); box-shadow: var(--shadow-lg);">
+            <div style="font-size: 11px; color: var(--color-neutral-300); margin-top: 8px;">The board. Every job, every state, live</div>
+          </div>
+          <div style="rotate: 2deg; width: 78%; margin: -8% 0 0 22%; position: relative; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+            <img src="assets/shot-c.png" alt="All Ears Crew, client event pack" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); box-shadow: var(--shadow-lg);">
+            <div style="font-size: 11px; color: var(--color-neutral-300); margin-top: 8px; text-align: right;">What a client sees: their own event pack</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-neutral-600);">
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 16%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Doors that open themselves</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Customers book a pickup and the system issues a time-boxed smart-lock door code. The lock validates it offline, so it works even with no internet at the door. This one feature removed the need for staffed handovers entirely.</div>
+          </div>
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 20%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Safety paperwork that writes itself</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">AI drafts NZ SiteSafe SSSP documents from the job's actual gear, venue and crew. A person always reviews and signs off before anything is sent.</div>
+          </div>
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">A warehouse that prints its own labels</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Queue a label in the app and a small agent in the workshop prints it, unattended. Shipping labels and case labels both.</div>
+          </div>
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 28%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">An AI teammate with an undo button</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">An AI assistant reads jobs and writes updates back through a tightly scoped integration. Every change is audited, surfaced in the app and reversible in one tap.</div>
+          </div>
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 32%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Venue plans drawn on a phone</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">A to-scale drag-and-drop editor for stages, PA and barriers. Metre-accurate, with an elevation view, and fast on a phone on site.</div>
+          </div>
+          <div style="padding: 18px 0 0; font-size: 12.5px; color: var(--color-neutral-300);">
+            The full technical detail, including the architecture and security model, is in the CV below.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv" data-screen-label="Contact and CV" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) clamp(48px, 7vh, 80px); text-align: left;">
+    <div data-float-hide style="position: absolute; top: 12%; right: 4%; width: clamp(130px, 13vw, 210px); rotate: 5deg; z-index: 0; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+      <img src="assets/will-portrait.png" alt="Will Thompson" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-700);">
+      <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px; text-align: right;">me, on the job</div>
+    </div>
+    <div style="position: relative; z-index: 1;">
+      <h2 style="font-size: clamp(40px, 7vw, 104px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 500; margin: 0; max-width: 12ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% entry 90%;">Let's build something<span style="color: var(--accent);">.</span></h2>
+      <p style="font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: var(--color-neutral-200); max-width: 48ch; margin: 22px 0 0; text-wrap: pretty;">
+        Looking for a graduate software engineering role where the messy, real-world version of the problem is the interesting part: operations, logistics, hardware, live events.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px;">
+        <a href="{{ cvUrl }}" download="Will Thompson CV.pdf" class="btn btn-primary" style="font-size: 15px; padding: 12px 22px;">Download CV (PDF) ↓</a>
+        <a href="{{ emailHref }}" class="btn btn-ghost" style="font-size: 15px; padding: 12px 22px;">{{ email }}</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); margin-top: clamp(32px, 5vw, 56px); padding-top: 20px; border-top: 1px solid var(--color-neutral-800); font-size: 12.5px; color: var(--color-neutral-300);">
+        <span>021 178 0355</span>
+        <a href="https://www.linkedin.com/in/william-thompson-nz/" style="color: var(--color-neutral-300); text-decoration: underline;" style-hover="color: var(--color-text);">linkedin/william-thompson-nz</a>
+        <a href="https://allears.nz" style="color: var(--color-neutral-300); text-decoration: underline;" style-hover="color: var(--color-text);">allears.nz</a>
+        <span style="margin-left: auto;">© 2026 Will Thompson</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;will@kitsbury.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;},&quot;cvUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;assets/will-thompson-cv.pdf&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+class Component extends DCLogic {
+  fieldRef = React.createRef();
+  componentDidMount() {
+    let tries = 0;
+    const wait = () => {
+      if (this.fieldRef.current) this.startSim(this.fieldRef.current);
+      else if (++tries < 120) this._raf = requestAnimationFrame(wait);
+    };
+    wait();
+  }
+  startSim(field) {
+    // seed CSS positions so items never stack at 0,0 pre-tick
+    for (const el of field.querySelectorAll('[data-phys]')) {
+      const [fx, fy] = el.dataset.phys.split(',').map(Number);
+      el.style.left = (fx * 100) + '%';
+      el.style.top = (fy * 100) + '%';
+      el.style.transform = 'translate(-50%, -50%)';
+    }
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(field.querySelectorAll('[data-phys]'));
+    let seeded = true; // until first tick, keep %-based left/top seeding
+    let W = 0, H = 0, bodies = [], zone = null;
+    const content = field.parentElement.querySelector('[data-hero-copy]');
+    const measure = () => {
+      const r = field.getBoundingClientRect();
+      W = r.width; H = r.height;
+      if (content) {
+        const c = content.getBoundingClientRect();
+        zone = { x1: c.left - r.left, y1: c.top - r.top, x2: c.right - r.left, y2: c.bottom - r.top };
+      }
+      bodies = els.map((el, i) => {
+        const [fx, fy, rad, rot] = el.dataset.phys.split(',').map(Number);
+        const b = bodies[i] && bodies[i].placed ? bodies[i] : {
+          x: fx * W, y: fy * H,
+          vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+          placed: true
+        };
+        b.el = el; b.r = Math.min(rad, W * 0.09); b.rot = rot;
+        let hx = fx * W, hy = Math.max(fy * H, (el.offsetHeight / 2) + 80);
+        if (zone) {
+          // project home to nearest safe band outside the inflated text rect
+          const m = b.r * 0.7 + 16;
+          if (hx > zone.x1 - m && hx < zone.x2 + m && hy > zone.y1 - m && hy < zone.y2 + m) {
+            const dl = hx - (zone.x1 - m), dr = (zone.x2 + m) - hx, dtp = hy - (zone.y1 - m), db = (zone.y2 + m) - hy;
+            const min = Math.min(dl, dr, dtp, db);
+            if (min === dl) hx = Math.max(zone.x1 - m, b.r);
+            else if (min === dr) hx = Math.min(zone.x2 + m, W - b.r);
+            else if (min === dtp) hy = Math.max(zone.y1 - m, b.r + 80);
+            else hy = Math.min(zone.y2 + m, H - b.r);
+          }
+        }
+        b.hx = hx; b.hy = hy;
+        return b;
+      });
+    };
+    measure();
+    this._onResize = measure;
+    window.addEventListener('resize', this._onResize);
+    const mouse = { x: -9999, y: -9999 };
+    const lastM = { x: -9999, y: -9999 };
+    const mv = { x: 0, y: 0 }; // smoothed mouse velocity
+    this._onMove = (e) => {
+      const r = field.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    };
+    this._onLeave = () => { mouse.x = -9999; mouse.y = -9999; mv.x = 0; mv.y = 0; };
+    const sect = field.parentElement;
+    sect.addEventListener('mousemove', this._onMove);
+    sect.addEventListener('mouseleave', this._onLeave);
+    // per-body wander phase + parallax factor
+    bodies.forEach((b, i) => {
+      b.ph = Math.random() * Math.PI * 2;
+      b.w1 = 0.00035 + Math.random() * 0.0003;
+      b.w2 = 0.0004 + Math.random() * 0.0003;
+      b.pf = ((i % 5) - 2) * 0.045;
+    });
+    let last = performance.now();
+    const tick = (now) => {
+      this._raf = requestAnimationFrame(tick);
+      if (seeded) { seeded = false; for (const el of els) { el.style.left = '0'; el.style.top = '0'; } }
+      const dt = Math.min((now - last) / 16.67, 3); last = now;
+      // smoothed mouse velocity (for brush-past pushes)
+      if (lastM.x > -9000 && mouse.x > -9000) {
+        mv.x += ((mouse.x - lastM.x) - mv.x) * 0.18;
+        mv.y += ((mouse.y - lastM.y) - mv.y) * 0.18;
+      } else { mv.x *= 0.9; mv.y *= 0.9; }
+      lastM.x = mouse.x; lastM.y = mouse.y;
+      for (const b of bodies) {
+        // gentle pull back toward home spot
+        b.vx += (b.hx - b.x) * 0.00012 * dt;
+        b.vy += (b.hy - b.y) * 0.00012 * dt;
+        // ambient wander — slow autonomous drift
+        b.vx += Math.sin(now * b.w1 + b.ph) * 0.010 * dt;
+        b.vy += Math.cos(now * b.w2 + b.ph * 1.7) * 0.012 * dt;
+        // mouse: pushed by cursor motion (not repelled) — soft directional shove
+        const dx = b.x - mouse.x, dy = b.y - mouse.y;
+        const d2 = dx * dx + dy * dy, rr = b.r + 170;
+        if (d2 < rr * rr && d2 > 1) {
+          const d = Math.sqrt(d2), t = 1 - d / rr;
+          const ease = t * t; // soft falloff
+          b.vx += mv.x * ease * 0.055 * dt;
+          b.vy += mv.y * ease * 0.055 * dt;
+          // very light cushion so a resting cursor doesn't overlap
+          const f = ease * 0.10 * dt;
+          b.vx += (dx / d) * f; b.vy += (dy / d) * f;
+        }
+        // push out of the text exclusion zone
+        if (zone) {
+          const m = b.r * 0.6;
+          const nx0 = Math.max(zone.x1 - m, Math.min(b.x, zone.x2 + m));
+          const ny0 = Math.max(zone.y1 - m, Math.min(b.y, zone.y2 + m));
+          if (nx0 === b.x && ny0 === b.y) {
+            const dl = b.x - (zone.x1 - m), dr = (zone.x2 + m) - b.x, dtp = b.y - (zone.y1 - m), db = (zone.y2 + m) - b.y;
+            const min = Math.min(dl, dr, dtp, db);
+            const f = 0.12 * dt;
+            if (min === dl) b.vx -= f; else if (min === dr) b.vx += f;
+            else if (min === dtp) b.vy -= f; else b.vy += f;
+          }
+        }
+        b.vx *= 0.98; b.vy *= 0.98;
+        // speed cap keeps everything buttery
+        const sp = Math.hypot(b.vx, b.vy);
+        if (sp > 4.5) { b.vx *= 4.5 / sp; b.vy *= 4.5 / sp; }
+        b.x += b.vx * dt; b.y += b.vy * dt;
+        // walls (bounce)
+        if (b.x < b.r) { b.x = b.r; b.vx = Math.abs(b.vx) * 0.7; }
+        if (b.x > W - b.r) { b.x = W - b.r; b.vx = -Math.abs(b.vx) * 0.7; }
+        const topWall = (b.el.offsetHeight / 2) + 70;
+        if (b.y < topWall) { b.y = topWall; b.vy = Math.abs(b.vy) * 0.7; }
+        if (b.y > H - b.r) { b.y = H - b.r; b.vy = -Math.abs(b.vy) * 0.7; }
+      }
+      // pairwise collisions
+      for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) {
+        const a = bodies[i], c = bodies[j];
+        const dx = c.x - a.x, dy = c.y - a.y;
+        const min = (a.r + c.r) * 0.9, d2 = dx * dx + dy * dy;
+        if (d2 < min * min && d2 > 1) {
+          const d = Math.sqrt(d2), nx = dx / d, ny = dy / d;
+          const push = (min - d) * 0.04;
+          a.x -= nx * push; a.y -= ny * push; c.x += nx * push; c.y += ny * push;
+          const rvx = c.vx - a.vx, rvy = c.vy - a.vy, sep = rvx * nx + rvy * ny;
+          if (sep < 0) {
+            const imp = -sep * 0.55;
+            a.vx -= nx * imp; a.vy -= ny * imp; c.vx += nx * imp; c.vy += ny * imp;
+          }
+        }
+      }
+      const sy = window.scrollY || 0;
+      for (const b of bodies) {
+        const w = b.el.offsetWidth || 1;
+        b.el.style.transform = `translate(${b.x - w / 2}px, ${b.y - b.el.offsetHeight / 2 + sy * b.pf}px) rotate(${b.rot + b.vx * 1.4}deg)`;
+      }
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    window.removeEventListener('resize', this._onResize);
+  }
+  renderVals() {
+    const vals = this.renderVals2();
+    vals.fieldRef = this.fieldRef;
+    return vals;
+  }
+  renderVals2() {
+    const email = this.props.email ?? "will@kitsbury.com";
+    return {
+      email,
+      emailHref: "mailto:" + email,
+      cvUrl: this.props.cvUrl ?? "assets/will-thompson-cv.pdf"
+    };
+  }
+}
+</script>
+</body>
+</html>
