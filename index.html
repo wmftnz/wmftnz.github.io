@@ -6,6 +6,24 @@
 <title>Will Thompson · Software engineer &amp; event production, Christchurch NZ</title>
 <meta name="description" content="Will Thompson: software engineer (BE(Hons), University of Canterbury), founder of All Ears Events, developer of the All Ears Crew app and the studio booking site, and co-builder of the Unit 20 ticketing platform.">
 <script src="./support.js"></script>
+<style>
+  /* Covers the page until the motion gate is up, so touch visitors get the
+     question instead of a flash of content behind it. */
+  html[data-motion-gate]::before { content: ''; position: fixed; inset: 0; z-index: 199; background: #161826; }
+</style>
+<script>
+  (function () {
+    try {
+      if (!matchMedia('(hover: none)').matches) return;
+      if (typeof DeviceOrientationEvent === 'undefined') return;
+      if (sessionStorage.getItem('wt-motion') !== null) return;
+      var el = document.documentElement;
+      el.setAttribute('data-motion-gate', '');
+      // Failsafe: never let a script error leave the page behind a blank cover.
+      setTimeout(function () { el.removeAttribute('data-motion-gate'); }, 3000);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 <x-dc>
@@ -69,7 +87,7 @@
   @media (max-width: 1100px) {
     [data-float-field] [data-phys] { width: clamp(78px, 23vw, 132px) !important; }
     [data-float-field] [data-phys] > div:last-child { font-size: 9.5px !important; margin-top: 5px !important; }
-    #top { min-height: 128vh !important; padding-top: 96px !important; }
+    #top { min-height: 150vh !important; padding-top: 96px !important; }
   }
   @media (max-width: 430px) {
     [data-float-field] [data-phys] { width: clamp(68px, 21vw, 104px) !important; }
@@ -383,12 +401,74 @@
 class Component extends DCLogic {
   fieldRef = React.createRef();
   componentDidMount() {
+    this.askForMotion();
     let tries = 0;
     const wait = () => {
       if (this.fieldRef.current) this.startSim(this.fieldRef.current);
       else if (++tries < 120) this._raf = requestAnimationFrame(wait);
     };
     wait();
+  }
+  enableTilt() {
+    // Called from both ends: the gate may answer before the sim is running, or
+    // the sim may come up after the answer is already in.
+    if (!this._motionWanted || this._tiltOn || !this._onTilt) return;
+    this._tiltOn = true;
+    window.addEventListener('deviceorientation', this._onTilt);
+  }
+  askForMotion() {
+    const uncover = () => document.documentElement.removeAttribute('data-motion-gate');
+    // Touch devices only — a mouse has nothing to tilt.
+    if (!matchMedia('(hover: none)').matches) { uncover(); return; }
+    if (typeof window.DeviceOrientationEvent === 'undefined') { uncover(); return; }
+    let saved = null;
+    try { saved = sessionStorage.getItem('wt-motion'); } catch (e) {}
+    if (saved === 'yes') { this._motionWanted = true; this.enableTilt(); uncover(); return; }
+    if (saved === 'no') { uncover(); return; }
+
+    const remember = (v) => { try { sessionStorage.setItem('wt-motion', v); } catch (e) {} };
+    const gate = document.createElement('div');
+    gate.setAttribute('style', 'position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 32px 28px; text-align: center; background: var(--color-bg); font-family: var(--font-body);');
+    const title = document.createElement('div');
+    title.textContent = 'Tilt to move the photos?';
+    title.setAttribute('style', 'font-family: var(--font-heading); font-size: 24px; font-weight: 500; letter-spacing: -0.02em; color: var(--color-text);');
+    const sub = document.createElement('div');
+    sub.textContent = 'The photos on this page drift with your phone. Turning this on lets them follow how you hold it.';
+    sub.setAttribute('style', 'font-size: 14px; line-height: 1.5; color: var(--color-neutral-300); max-width: 30ch; margin-bottom: 6px;');
+    const yes = document.createElement('button');
+    yes.type = 'button';
+    yes.textContent = 'Enable motion';
+    yes.setAttribute('style', 'font: inherit; font-size: 15px; font-weight: 500; color: #17162a; background: var(--accent); border: 0; border-radius: 999px; padding: 13px 26px; cursor: pointer; min-width: 200px;');
+    const no = document.createElement('button');
+    no.type = 'button';
+    no.textContent = 'No thanks';
+    no.setAttribute('style', 'font: inherit; font-size: 14px; color: var(--color-neutral-300); background: none; border: 0; padding: 10px 16px; cursor: pointer;');
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const close = () => {
+      document.body.style.overflow = prevOverflow;
+      gate.remove();
+      this._gate = null;
+    };
+    no.addEventListener('click', () => { remember('no'); close(); });
+    yes.addEventListener('click', () => {
+      const req = window.DeviceOrientationEvent.requestPermission;
+      // iOS gates motion behind a real user gesture — this tap is that gesture.
+      // Everywhere else the events just flow, so there is nothing to request.
+      if (typeof req !== 'function') { this._motionWanted = true; remember('yes'); this.enableTilt(); close(); return; }
+      yes.disabled = true;
+      Promise.resolve(req.call(window.DeviceOrientationEvent)).then((res) => {
+        if (res === 'granted') { this._motionWanted = true; remember('yes'); this.enableTilt(); }
+        else remember('no');
+      }).catch(() => {}).then(close);
+    });
+
+    gate.append(title, sub, yes, no);
+    document.body.appendChild(gate);
+    uncover(); // the gate itself is opaque from here on
+    this._gate = gate;
+    yes.focus();
   }
   startSim(field) {
     // seed CSS positions so items never stack at 0,0 pre-tick
@@ -421,7 +501,18 @@ class Component extends DCLogic {
         // never let the collision radius fall below the tile's own size, or the
         // small phone layout packs them into overlapping piles with the
         // captions sitting on top of each other
-        b.el = el; b.fx = fx; b.r = Math.min(rad, Math.max(W * 0.09, el.offsetWidth * 0.5, el.offsetHeight * 0.42)); b.rot = rot;
+        // The tiles are rotated, so their real footprint is bigger than the
+        // plain width/height. On phones they sit close enough that ignoring
+        // that lets them visibly overlap before the collision even triggers.
+        const rr = Math.abs(rot) * Math.PI / 180;
+        const cosr = Math.cos(rr), sinr = Math.sin(rr);
+        const hwRot = (el.offsetWidth * cosr + el.offsetHeight * sinr) / 2;
+        const hhRot = (el.offsetWidth * sinr + el.offsetHeight * cosr) / 2;
+        b.el = el; b.fx = fx; b.rot = rot;
+        b.r = Math.min(rad, wideZone
+          ? Math.max(W * 0.09, hwRot, hhRot)
+          : Math.max(W * 0.09, el.offsetWidth * 0.5, el.offsetHeight * 0.42));
+        b.hw = Math.max(b.r, hwRot); // keeps a rotated tile off the clipped edge
         let hx = fx * W, hy = Math.max(fy * H, (el.offsetHeight / 2) + 80);
         if (zone && wideZone) {
           // Phone layout: the copy spans nearly the full width, so there is no
@@ -434,7 +525,7 @@ class Component extends DCLogic {
           b.bandName = useTop ? 'top' : 'bot';
           b.band = useTop ? [topLo, topHi] : [Math.min(botLo, botHi), Math.max(botLo, botHi)];
           hy = Math.max(b.band[0], Math.min(hy, b.band[1]));
-          hx = Math.max(b.r, Math.min(hx, W - b.r));
+          hx = Math.max(b.hw, Math.min(hx, W - b.hw));
         } else if (zone) {
           b.band = null;
           // project home to nearest safe band outside the inflated text rect
@@ -463,16 +554,17 @@ class Component extends DCLogic {
           // Hand out slots left to right. Assigning them in DOM order sends
           // tiles across each other and two of them deadlock mid-swap.
           g.sort((p, q) => p.fx - q.fx);
-          const tileW = g[0].el.offsetWidth + 8;
+          const tileW = g[0].el.offsetWidth + 30; // breathing room between slots
           const perRow = Math.max(2, Math.min(g.length, Math.floor(W / tileW)));
           const rows = Math.ceil(g.length / perRow);
           const [lo, hi] = g[0].band;
-          const fits = (hi - lo) > g[0].el.offsetHeight * (rows - 1);
+          // a second row needs room for BOTH rows, not just one tile
+          const fits = (hi - lo) > g[0].el.offsetHeight * rows * 0.95;
           g.forEach((b, k) => {
             const row = fits ? Math.floor(k / perRow) : 0;
             const col = fits ? k % perRow : k;
             const n = fits ? Math.min(perRow, g.length - row * perRow) : g.length;
-            b.hx = Math.max(b.r, Math.min(((col + 0.5) / n) * W, W - b.r));
+            b.hx = Math.max(b.hw, Math.min(((col + 0.5) / n) * W, W - b.hw));
             b.hy = (fits && rows > 1) ? lo + (hi - lo) * ((row + 0.5) / rows) : (lo + hi) / 2;
           });
         }
@@ -532,26 +624,9 @@ class Component extends DCLogic {
       tilt.x += (gx - tilt.x) * 0.12;
       tilt.y += (gy - tilt.y) * 0.12;
     };
-    const startTilt = () => window.addEventListener('deviceorientation', this._onTilt);
-    const hasTilt = typeof window.DeviceOrientationEvent !== 'undefined';
-    const needsGrant = hasTilt && typeof window.DeviceOrientationEvent.requestPermission === 'function';
-    if (hasTilt && !needsGrant && matchMedia('(hover: none)').matches) startTilt();
-    if (needsGrant) {
-      // iOS only hands out motion access from a real user gesture, so this
-      // cannot be requested on load — it has to be a tap.
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = 'Tilt to move the photos';
-      btn.setAttribute('style', 'position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 5; pointer-events: auto; font: inherit; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--color-text); background: color-mix(in srgb, var(--color-bg) 70%, transparent); backdrop-filter: blur(10px); border: 1px solid var(--color-neutral-600); border-radius: 999px; padding: 9px 16px; cursor: pointer;');
-      btn.addEventListener('click', () => {
-        Promise.resolve(window.DeviceOrientationEvent.requestPermission()).then((res) => {
-          if (res === 'granted') { startTilt(); btn.remove(); }
-          else { btn.textContent = 'Motion access denied'; setTimeout(() => btn.remove(), 2200); }
-        }).catch(() => btn.remove());
-      });
-      sect.appendChild(btn);
-      this._tiltBtn = btn;
-    }
+    // The motion gate (see askForMotion) runs before this and may already have
+    // the answer; wire the listener up now that _onTilt exists.
+    this.enableTilt();
     // per-body wander phase + parallax factor
     bodies.forEach((b, i) => {
       b.ph = Math.random() * Math.PI * 2;
@@ -626,8 +701,8 @@ class Component extends DCLogic {
         if (sp > 4.5) { b.vx *= 4.5 / sp; b.vy *= 4.5 / sp; }
         b.x += b.vx * dt; b.y += b.vy * dt;
         // walls (bounce)
-        if (b.x < b.r) { b.x = b.r; b.vx = Math.abs(b.vx) * 0.7; }
-        if (b.x > W - b.r) { b.x = W - b.r; b.vx = -Math.abs(b.vx) * 0.7; }
+        if (b.x < b.hw) { b.x = b.hw; b.vx = Math.abs(b.vx) * 0.7; }
+        if (b.x > W - b.hw) { b.x = W - b.hw; b.vx = -Math.abs(b.vx) * 0.7; }
         const topWall = (b.el.offsetHeight / 2) + 70;
         if (b.y < topWall) { b.y = topWall; b.vy = Math.abs(b.vy) * 0.7; }
         if (b.y > H - b.r) { b.y = H - b.r; b.vy = -Math.abs(b.vy) * 0.7; }
@@ -641,7 +716,7 @@ class Component extends DCLogic {
       for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) {
         const a = bodies[i], c = bodies[j];
         const dx = c.x - a.x, dy = c.y - a.y;
-        const min = (a.r + c.r) * 0.9, d2 = dx * dx + dy * dy;
+        const min = (a.r + c.r) * (wideZone ? 1 : 0.9), d2 = dx * dx + dy * dy;
         if (d2 < min * min) {
           // Two bodies sitting on the exact same spot give d2 === 0, and a
           // normal of 0/0 welds them together permanently. Break the tie on a
@@ -670,7 +745,7 @@ class Component extends DCLogic {
     window.removeEventListener('resize', this._onResize);
     if (this._onLoad) window.removeEventListener('load', this._onLoad);
     if (this._onTilt) window.removeEventListener('deviceorientation', this._onTilt);
-    if (this._tiltBtn) this._tiltBtn.remove();
+    if (this._gate) { this._gate.remove(); document.body.style.overflow = ''; }
   }
   renderVals() {
     const vals = this.renderVals2();
