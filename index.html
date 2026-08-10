@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Will Thompson · Software engineer &amp; event production, Christchurch NZ</title>
-<meta name="description" content="Will Thompson: software engineer (BE(Hons), University of Canterbury), founder of All Ears Events, and sole developer of All Ears Crew, the Unit 20 ticketing platform and the studio booking site.">
+<meta name="description" content="Will Thompson: software engineer (BE(Hons), University of Canterbury), founder of All Ears Events, developer of the All Ears Crew app and the studio booking site, and co-builder of the Unit 20 ticketing platform.">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -54,6 +54,18 @@
     [data-grid] { grid-template-columns: minmax(0, 1fr) !important; }
     [data-sticky] { position: static !important; }
   }
+  .u20-stack { position: relative; height: clamp(150px, 15vw, 205px); }
+  .u20-card { position: absolute; top: 0; left: 0; width: 54%; height: 100%; border-radius: 10px; border: 1px solid var(--color-neutral-600); overflow: hidden; box-shadow: var(--shadow-lg); background: var(--color-bg); transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s ease; transform: translateX(calc(var(--i) * 11%)) translateY(calc(var(--i) * 5px)) rotate(calc(var(--i) * 3deg - 3deg)); }
+  .u20-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .u20-stack:hover .u20-card:nth-child(1) { transform: translate(-2%, -10px) rotate(-5deg) scale(1.02); }
+  .u20-stack:hover .u20-card:nth-child(2) { transform: translate(23%, -4px) rotate(0deg) scale(1.02); }
+  .u20-stack:hover .u20-card:nth-child(3) { transform: translate(46%, -10px) rotate(5deg) scale(1.02); }
+  .u20-stack:hover .u20-card { box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45); }
+  @media (hover: none) {
+    .u20-card:nth-child(1) { transform: translate(-2%, -6px) rotate(-5deg); }
+    .u20-card:nth-child(2) { transform: translate(23%, 0) rotate(0deg); }
+    .u20-card:nth-child(3) { transform: translate(46%, -6px) rotate(5deg); }
+  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
   }
@@ -76,7 +88,7 @@
       </div>
       <div data-phys="0.78,0.05,150,3" style="position: absolute; width: clamp(130px, 14vw, 240px); will-change: transform;">
         <div class="lighten"><img src="assets/oursound-event.jpg" alt="OurSound monthly event" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">OurSound · our monthly events</div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">OurSound Events</div>
       </div>
       <div data-phys="0.05,0.62,120,2" style="position: absolute; width: clamp(110px, 11vw, 190px); will-change: transform;">
         <div class="lighten"><img src="https://allears.nz/events/rvgarden20252.webp" alt="Rhythm and Vines Garden Stage" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
@@ -100,15 +112,11 @@
       </div>
       <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
         <img src="assets/studio-site.jpg" alt="studio.unit20.nz" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">studio.unit20.nz · studio bookings</div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Unit 20 Studios · bookable studio</div>
       </div>
       <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
         <img src="assets/code-editor.jpg" alt="Unit 20 codebase in the editor" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: left top; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the code underneath</div>
-      </div>
-      <div data-phys="0.45,0.90,100,-3" style="position: absolute; width: clamp(90px, 9vw, 160px); will-change: transform;">
-        <img src="assets/studio-admin.jpg" alt="Unit 20 studio admin dashboard" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: left top; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the studio admin · built this too</div>
       </div>
     </div>
 
@@ -121,7 +129,7 @@
         that runs them.
       </h1>
       <p style="font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: var(--color-neutral-200); max-width: 52ch; margin: 26px 0 0; text-wrap: pretty; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 6%;">
-        Will Thompson, founder of <a href="#allears" style="color: var(--accent); pointer-events: auto;">All Ears Events</a>, operator of the <a href="#unit20" style="color: var(--accent); pointer-events: auto;">Unit 20</a> warehouse &amp; studios, sole developer of <a href="#crew" style="color: var(--accent); pointer-events: auto;">All Ears Crew</a> and the studio booking site, and co-builder of the Unit 20 ticketing platform with Joseph Hendry.
+        Will Thompson, founder of <a href="#allears" style="color: var(--accent); pointer-events: auto;">All Ears Events</a>, operator of the <a href="#unit20" style="color: var(--accent); pointer-events: auto;">Unit 20</a> warehouse &amp; studios, developer of the <a href="#crew" style="color: var(--accent); pointer-events: auto;">All Ears Crew app</a> and the studio booking site, and co-builder of the Unit 20 ticketing platform with Joseph Hendry.
       </p>
       <div style="display: flex; align-items: center; gap: 14px; margin-top: 34px; pointer-events: auto; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 8%;">
         <a href="#allears" class="btn btn-primary">Take the tour</a>
@@ -132,14 +140,7 @@
     <div style="position: absolute; bottom: 22px; left: 50%; translate: -50% 0; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-400); animation: bob 2.6s ease-in-out infinite;">Scroll ↓</div>
   </section>
 
-  <div style="border-top: 1px solid var(--color-neutral-800); border-bottom: 1px solid var(--color-neutral-800);">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 40px;">
-      <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400);">In numbers</span>
-      <div style="display: flex; flex-wrap: wrap; gap: 16px 32px; font-size: 14px; color: var(--color-neutral-200);">
-        <span><strong style="color: var(--color-text); font-weight: 600;">2024</strong> All Ears founded</span><span><strong style="color: var(--color-text); font-weight: 600;">350 to 500</strong> at monthly OurSound events</span><span><strong style="color: var(--color-text); font-weight: 600;">$54,000+</strong> in ticket payments processed</span><span><strong style="color: var(--color-text); font-weight: 600;">39,500</strong> lines of production code</span>
-      </div>
-    </div>
-  </div>
+  
 
   <section id="allears" data-screen-label="All Ears" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
     <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The shows</div>
@@ -237,18 +238,30 @@
           </div>
         </div>
       </div>
-      <div style="position: relative; min-height: 480px;">
-        <div style="position: absolute; top: 0; left: 0; width: 62%; rotate: -3deg; z-index: 2; animation: float2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <img src="assets/unit20-building.jpg" alt="The Unit 20 building on Southwark Street" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;">
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Unit 20, Southwark Street</div>
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: 10px;">Unit 20 Live · ticketing</div>
+          <div class="u20-stack">
+            <div class="u20-card" style="--i: 0;"><img src="assets/unit20-site.jpg" alt="unit20.nz ticketing home page"></div>
+            <div class="u20-card" style="--i: 1;"><img src="assets/event-page.jpg" alt="Event page with ticket releases"></div>
+            <div class="u20-card" style="--i: 2;"><img src="assets/checkout.jpg" alt="Stripe checkout flow" style="object-position: center top;"></div>
+          </div>
         </div>
-        <div style="position: absolute; top: 34%; right: 0; width: 52%; rotate: 2.5deg; z-index: 3; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <image-slot id="u20-lock" shape="rounded" radius="10" style="width: 100%; aspect-ratio: 1/1;" placeholder="The smart lock / door code moment"></image-slot>
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px; text-align: right;">The door that opens itself</div>
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: 10px;">Unit 20 Studios · bookings</div>
+          <div class="u20-stack">
+            <div class="u20-card" style="--i: 0;"><img src="assets/studio-room.jpg" alt="The studio room" style="object-position: center 60%;"></div>
+            <div class="u20-card" style="--i: 1;"><img src="assets/studio-site.jpg" alt="studio.unit20.nz booking site"></div>
+            <div class="u20-card" style="--i: 2;"><img src="assets/studio-admin.jpg" alt="Studio admin, one booking" style="object-position: left top;"></div>
+          </div>
         </div>
-        <div style="position: absolute; bottom: 0; left: 8%; width: 48%; rotate: 1.5deg; z-index: 1; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <img src="assets/studio-room.jpg" alt="Unit 20 Studios DJ room" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 60%; border-radius: 10px;">
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Studios</div>
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400); margin-bottom: 10px;">The building · Southwark Street</div>
+          <div class="u20-stack">
+            <div class="u20-card" style="--i: 0;"><img src="assets/unit20-building.jpg" alt="The Unit 20 building"></div>
+            <div class="u20-card" style="--i: 1;"><img src="assets/cdj-closeup.jpg" alt="CDJs in the studio"></div>
+            <div class="u20-card" style="--i: 2;"><image-slot id="u20-lock" shape="rounded" radius="0" style="width: 100%; height: 100%;" placeholder="The smart lock"></image-slot></div>
+          </div>
         </div>
       </div>
     </div>
@@ -278,6 +291,10 @@
           <div style="rotate: 2deg; width: 78%; margin: -8% 0 0 22%; position: relative; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
             <img src="assets/shot-c.png" alt="All Ears Crew, client event pack" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); box-shadow: var(--shadow-lg);">
             <div style="font-size: 11px; color: var(--color-neutral-300); margin-top: 8px; text-align: right;">What a client sees: their own event pack</div>
+          </div>
+          <div style="rotate: -2.5deg; width: 42%; margin: -4% 0 0 4%; position: relative; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+            <img src="assets/crew-presence.jpg" alt="All Ears Crew live presence panel" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); box-shadow: var(--shadow-lg);">
+            <div style="font-size: 11px; color: var(--color-neutral-300); margin-top: 8px;">Who's on, live</div>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-neutral-600);">

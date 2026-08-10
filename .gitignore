@@ -1,2 +1,5 @@
 .DS_Store
 node_modules/
+
+# Contains unredacted customer PII — use assets/studio-admin.jpg (blurred) instead
+assets/studio-admin-unblurred.jpg
