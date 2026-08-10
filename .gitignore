@@ -3,3 +3,8 @@ node_modules/
 
 # Contains unredacted customer PII — use assets/studio-admin.jpg (blurred) instead
 assets/studio-admin-unblurred.jpg
+
+# Source photos kept locally — HEIC isn't web-safe and the raw dry hire
+# screenshot shows an unredacted door code. Web copies live in assets/.
+*.HEIC
+dryhirecodebackend.jpg
