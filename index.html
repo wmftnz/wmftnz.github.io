@@ -63,17 +63,8 @@
 <div style="background: var(--color-bg); overflow-x: hidden;">
 
   <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; display: flex; align-items: center; gap: 20px; padding: 14px clamp(20px, 5vw, 56px); background: color-mix(in srgb, var(--color-bg) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-neutral-800);">
-    <a href="#top" style="font-family: var(--font-heading); font-weight: 500; font-size: 15px; color: var(--color-text); margin-right: auto; display: flex; align-items: center; gap: 10px;">
-      <span style="width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); display: inline-block;"></span>
-      Will Thompson
-    </a>
-    <div style="display: flex; gap: clamp(10px, 2vw, 24px); font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em;">
-      <a href="#unit20" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">Unit 20</a>
-      <a href="#allears" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">All Ears</a>
-      <a href="#software" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">Software</a>
-      <a href="#crew" style="color: var(--color-neutral-300);" style-hover="color: var(--color-text);">The app</a>
-      <a href="#cv" class="btn btn-primary" style="padding: 6px 14px; font-size: 12.5px;">CV ↓</a>
-    </div>
+    <a href="#top" style="font-family: var(--font-heading); font-weight: 500; font-size: 15px; color: var(--color-text); margin-right: auto;">Will Thompson</a>
+    <a href="{{ cvUrl }}" download="Will Thompson CV.pdf" class="btn btn-primary" style="padding: 6px 14px; font-size: 12.5px;">Download CV</a>
   </div>
 
   <section id="top" data-screen-label="Hero" style="position: relative; min-height: 108vh; display: flex; align-items: center; padding: 120px clamp(20px, 5vw, 56px) 60px;">
@@ -84,12 +75,12 @@
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">Twominds · lasers &amp; LED</div>
       </div>
       <div data-phys="0.78,0.05,150,3" style="position: absolute; width: clamp(130px, 14vw, 240px); will-change: transform;">
-        <div class="lighten"><img src="https://allears.nz/events/concarne4.webp" alt="ConCarne Wild Horses" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">ConCarne · lighting &amp; FX</div>
+        <div class="lighten"><img src="assets/oursound-event.jpg" alt="OurSound monthly event" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">OurSound · our monthly events</div>
       </div>
       <div data-phys="0.05,0.62,120,2" style="position: absolute; width: clamp(110px, 11vw, 190px); will-change: transform;">
-        <div class="lighten"><img src="https://allears.nz/events/rvsitelighting.webp" alt="Rhythm and Vines site lighting" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">R&amp;V · site lighting</div>
+        <div class="lighten"><img src="https://allears.nz/events/rvgarden20252.webp" alt="Rhythm and Vines Garden Stage" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">R&amp;V · Garden Stage</div>
       </div>
       <div data-phys="0.86,0.60,140,-3" style="position: absolute; width: clamp(120px, 13vw, 220px); will-change: transform;">
         <div class="lighten"><img src="https://allears.nz/events/flowdanchch6.webp" alt="Flowdan NZ tour" style="display: block; width: 100%; border-radius: var(--radius-md); pointer-events: none;"></div>
@@ -105,7 +96,7 @@
       </div>
       <div data-phys="0.94,0.32,110,4" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
         <img src="assets/unit20-site.jpg" alt="unit20.nz ticketing site" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">unit20.nz · ticketing, built solo</div>
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">unit20.nz · ticketing platform</div>
       </div>
       <div data-phys="0.16,0.78,110,3" style="position: absolute; width: clamp(100px, 10vw, 180px); will-change: transform;">
         <img src="assets/studio-site.jpg" alt="studio.unit20.nz" style="display: block; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-neutral-600); pointer-events: none;">
@@ -116,28 +107,24 @@
         <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the code underneath</div>
       </div>
       <div data-phys="0.45,0.90,100,-3" style="position: absolute; width: clamp(90px, 9vw, 160px); will-change: transform;">
-        <image-slot id="hero-uni" shape="rounded" radius="8" style="width: 100%; aspect-ratio: 16/10;" placeholder="Uni project screenshot"></image-slot>
-        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">SENG302 · university build</div>
+        <img src="assets/studio-admin.jpg" alt="Unit 20 studio admin dashboard" style="display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: left top; border-radius: 8px; border: 1px solid var(--color-neutral-600); pointer-events: none;">
+        <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 8px;">the studio admin · built this too</div>
       </div>
     </div>
 
     <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; pointer-events: none;">
     <div data-hero-copy style="display: inline-block; max-width: 100%;">
-      <div style="display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--color-neutral-700); border-radius: 999px; padding: 8px 16px; font-size: 12.5px; color: var(--color-neutral-200); pointer-events: auto; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 50%;">
-        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent);"></span>
-        Christchurch, NZ · software engineer · founder
-      </div>
+      <div style="font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-300); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 50%;">Ōtautahi · software engineer · founder</div>
       <h1 style="font-size: clamp(42px, 7.6vw, 118px); line-height: 1.0; letter-spacing: -0.04em; font-weight: 500; margin: 26px 0 0; max-width: 14ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">
         I run shows.<br>
         I write the <span style="background: linear-gradient(90deg, var(--accent), var(--accent-soft), var(--accent)); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradText 12s linear infinite;">software</span><br>
         that runs them.
       </h1>
       <p style="font-size: clamp(15px, 1.4vw, 19px); line-height: 1.55; color: var(--color-neutral-200); max-width: 52ch; margin: 26px 0 0; text-wrap: pretty; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 6%;">
-        Will Thompson, founder of <a href="#allears" style="color: var(--accent); pointer-events: auto;">All Ears Events</a>, operator of the <a href="#unit20" style="color: var(--accent); pointer-events: auto;">Unit 20</a> warehouse &amp; studios, and sole developer of <a href="#crew" style="color: var(--accent); pointer-events: auto;">All Ears Crew</a>, the Unit 20 ticketing platform and the studio booking site that run it all.
+        Will Thompson, founder of <a href="#allears" style="color: var(--accent); pointer-events: auto;">All Ears Events</a>, operator of the <a href="#unit20" style="color: var(--accent); pointer-events: auto;">Unit 20</a> warehouse &amp; studios, sole developer of <a href="#crew" style="color: var(--accent); pointer-events: auto;">All Ears Crew</a> and the studio booking site, and co-builder of the Unit 20 ticketing platform with Joseph Hendry.
       </p>
       <div style="display: flex; align-items: center; gap: 14px; margin-top: 34px; pointer-events: auto; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 8%;">
-        <a href="#unit20" class="btn btn-primary">Take the tour</a>
-        <a href="#cv" class="btn btn-ghost">Download CV</a>
+        <a href="#allears" class="btn btn-primary">Take the tour</a>
       </div>
     </div>
     </div>
@@ -147,78 +134,38 @@
 
   <div style="border-top: 1px solid var(--color-neutral-800); border-bottom: 1px solid var(--color-neutral-800);">
     <div style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 56px); display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 40px;">
-      <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400);">Selected work</span>
+      <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-400);">In numbers</span>
       <div style="display: flex; flex-wrap: wrap; gap: 16px 32px; font-size: 14px; color: var(--color-neutral-200);">
-        <span>Rhythm &amp; Vines</span><span>Red Bull</span><span>George FM</span><span>Flowdan</span><span>Twominds</span><span>Our Sound</span><span>Kathryn Wilson</span>
+        <span><strong style="color: var(--color-text); font-weight: 600;">2024</strong> All Ears founded</span><span><strong style="color: var(--color-text); font-weight: 600;">350 to 500</strong> at monthly OurSound events</span><span><strong style="color: var(--color-text); font-weight: 600;">$54,000+</strong> in ticket payments processed</span><span><strong style="color: var(--color-text); font-weight: 600;">39,500</strong> lines of production code</span>
       </div>
     </div>
   </div>
-
-  <section id="unit20" data-screen-label="Unit 20" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
-    <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The HQ</div>
-    <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 18px 0 0; max-width: 18ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">Unit 20, a warehouse that runs itself.</h2>
-    <div data-grid style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); margin-top: clamp(28px, 4vw, 48px); align-items: start;">
-      <div>
-        <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 0; text-wrap: pretty;">
-          Warehouse, workshop, event space and bookable studios. It's the base every show packs out of, and the proving ground for everything I build: customers schedule their own pickups and the door unlocks itself with a time-boxed code, labels print unattended in the workshop, and a wall display shows the crew what's leaving today.
-        </p>
-        <div style="display: flex; flex-direction: column; gap: 0; margin-top: 28px; border-top: 1px solid var(--color-neutral-800);">
-          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 18%;">
-            <div><strong style="font-weight: 600;">Self-service dry hire.</strong> <span style="color: var(--color-neutral-300);">Pick a time online, get a door code by email, collect your gear. A customer can pick up at 7am on a Sunday with nobody on site.</span></div>
-          </div>
-          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 22%;">
-            <div><strong style="font-weight: 600;">Unit 20 Studios.</strong> <span style="color: var(--color-neutral-300);">A DJ practice studio booked online at studio.unit20.nz. Pay, verify your ID once, and your door code arrives automatically.</span></div>
-          </div>
-          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-            <div><strong style="font-weight: 600;">Unit 20 Live.</strong> <span style="color: var(--color-neutral-300);">Ticketing for our own shows at unit20.nz. Card payments, QR check-in, pre-sale ballots and a full admin dashboard, with $54,000+ in payments processed to date.</span></div>
-          </div>
-          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 26%;">
-            <div><strong style="font-weight: 600;">One shared system.</strong> <span style="color: var(--color-neutral-300);">The studio and the AV company share one database, so the studio calendar automatically refuses bookings on days the decks are out on a show.</span></div>
-          </div>
-        </div>
-      </div>
-      <div style="position: relative; min-height: 480px;">
-        <div style="position: absolute; top: 0; left: 0; width: 62%; rotate: -3deg; z-index: 2; animation: float2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <img src="assets/unit20-building.jpg" alt="The Unit 20 building on Southwark Street" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;">
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Unit 20, Southwark Street</div>
-        </div>
-        <div style="position: absolute; top: 34%; right: 0; width: 52%; rotate: 2.5deg; z-index: 3; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <image-slot id="u20-lock" shape="rounded" radius="10" style="width: 100%; aspect-ratio: 1/1;" placeholder="The smart lock / door code moment"></image-slot>
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px; text-align: right;">The door that opens itself</div>
-        </div>
-        <div style="position: absolute; bottom: 0; left: 8%; width: 48%; rotate: 1.5deg; z-index: 1; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-          <img src="assets/studio-room.jpg" alt="Unit 20 Studios DJ room" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 60%; border-radius: 10px;">
-          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Studios</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="allears" data-screen-label="All Ears" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
     <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The shows</div>
     <div data-grid style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 4vw, 64px); margin-top: 18px; align-items: end;">
       <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 0; max-width: 16ch;  animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">All Ears Events. Sound, lighting and full production.</h2>
       <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 0 0 8px; text-wrap: pretty;">
-        Founded March 2024. From school balls to festival stages, including Rhythm and Vines, Red Bull, GeorgeFM, Flowdan and Twominds, with a crew roster, a truck and a compliance trail for every job. <a href="https://allears.nz" style="color: var(--accent);">allears.nz ↗</a>
+        Founded early 2024. From school balls and corporate events to festival stages, All Ears carries an extensive audio visual inventory and a skilled crew ready for any job, run from a 600 square metre warehouse in central Christchurch. I also run OurSound, a promotion company whose monthly house music events regularly draw 350 to 500 people. <a href="https://allears.nz" style="color: var(--accent);">allears.nz ↗</a>
       </p>
     </div>
 
     <div data-grid style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: clamp(32px, 5vw, 56px);">
       <div style="display: flex; flex-direction: column; gap: 16px; animation: colUp linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-        <div class="lighten"><img src="https://allears.nz/events/rvgarden20252.webp" alt="R&amp;V Garden Stage" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <img src="assets/crew-marquee.jpg" alt="All Ears crew mixing front of house" style="display: block; width: 100%; border-radius: var(--radius-md);">
         <div class="lighten"><img src="https://allears.nz/events/oursound23.webp" alt="Our Sound production" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
       </div>
       <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 40px; animation: colDown linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-        <div class="lighten"><img src="https://allears.nz/events/h4h4.webp" alt="HIIT for Hope broadcast stage" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <div class="lighten"><img src="https://allears.nz/events/h4h3.webp" alt="HIIT for Hope broadcast stage" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
         <div class="lighten"><img src="https://allears.nz/events/ayrburn10.webp" alt="Kathryn Wilson, Stilettos in the Vines" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
       </div>
       <div style="display: flex; flex-direction: column; gap: 16px; animation: colUp linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
-        <div class="lighten"><img src="https://allears.nz/events/redbullwfl26.webp" alt="Red Bull WFL World Run" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
-        <div class="lighten"><img src="https://allears.nz/events/lads25run2.webp" alt="Run72 site lighting" style="display: block; width: 100%; border-radius: var(--radius-md);"></div>
+        <img src="assets/truck-lake.jpg" alt="All Ears truck at a lakeside event" style="display: block; width: 100%; border-radius: var(--radius-md);">
+        <img src="assets/cellar-circle.jpg" alt="Cellar Circle in the trees" style="display: block; width: 100%; border-radius: var(--radius-md);">
       </div>
     </div>
     <div style="margin-top: 14px; display: flex; justify-content: space-between; font-size: 11px; color: var(--color-neutral-400);">
-      <span>R&amp;V · Our Sound · HIIT for Hope · Kathryn Wilson · Red Bull · Run72</span>
+      <span>The crew · Our Sound · HIIT for Hope · Kathryn Wilson · Breast Cancer Cure · Cellar Circle</span>
       <span>photos from allears.nz</span>
     </div>
   </section>
@@ -267,6 +214,46 @@
     </div>
   </section>
 
+  <section id="unit20" data-screen-label="Unit 20" style="position: relative; max-width: 1200px; margin: 0 auto; padding: clamp(80px, 12vh, 150px) clamp(20px, 5vw, 56px) 0;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% entry 80%;">The HQ</div>
+    <h2 style="font-size: clamp(34px, 5.4vw, 76px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 500; margin: 18px 0 0; max-width: 18ch; animation: pop linear both; animation-timeline: view(); animation-range: entry 0% cover 12%;">Unit 20, a warehouse that runs itself.</h2>
+    <div data-grid style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); margin-top: clamp(28px, 4vw, 48px); align-items: start;">
+      <div>
+        <p style="font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: var(--color-neutral-200); margin: 0; text-wrap: pretty;">
+          Warehouse, workshop, event space and bookable studios. It's the base every show packs out of, and the proving ground for everything I build: customers schedule their own pickups and the door unlocks itself with a time-boxed code, labels print unattended in the workshop, and a wall display shows the crew what's leaving today.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0; margin-top: 28px; border-top: 1px solid var(--color-neutral-800);">
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 18%;">
+            <div><strong style="font-weight: 600;">Self-service dry hire.</strong> <span style="color: var(--color-neutral-300);">Pick a time online, get a door code by email, collect your gear. A customer can pick up at 7am on a Sunday with nobody on site.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 22%;">
+            <div><strong style="font-weight: 600;">Unit 20 Studios.</strong> <span style="color: var(--color-neutral-300);">A DJ practice studio booked online at studio.unit20.nz. Pay, verify your ID once, and your door code arrives automatically.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+            <div><strong style="font-weight: 600;">Unit 20 Live.</strong> <span style="color: var(--color-neutral-300);">Ticketing for our own shows at unit20.nz, built with Joseph Hendry. Card payments, QR check-in, pre-sale ballots and a full admin dashboard, with $54,000+ in payments processed to date.</span></div>
+          </div>
+          <div style="display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--color-neutral-800); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 26%;">
+            <div><strong style="font-weight: 600;">One shared system.</strong> <span style="color: var(--color-neutral-300);">The studio and the AV company share one database, so the studio calendar automatically refuses bookings on days the decks are out on a show.</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="position: relative; min-height: 480px;">
+        <div style="position: absolute; top: 0; left: 0; width: 62%; rotate: -3deg; z-index: 2; animation: float2 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <img src="assets/unit20-building.jpg" alt="The Unit 20 building on Southwark Street" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;">
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Unit 20, Southwark Street</div>
+        </div>
+        <div style="position: absolute; top: 34%; right: 0; width: 52%; rotate: 2.5deg; z-index: 3; animation: float1 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <image-slot id="u20-lock" shape="rounded" radius="10" style="width: 100%; aspect-ratio: 1/1;" placeholder="The smart lock / door code moment"></image-slot>
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px; text-align: right;">The door that opens itself</div>
+        </div>
+        <div style="position: absolute; bottom: 0; left: 8%; width: 48%; rotate: 1.5deg; z-index: 1; animation: float5 linear both; animation-timeline: view(); animation-range: cover 0% cover 100%;">
+          <img src="assets/studio-room.jpg" alt="Unit 20 Studios DJ room" style="display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 60%; border-radius: 10px;">
+          <div style="font-size: 11px; color: var(--color-neutral-400); margin-top: 6px;">Studios</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="crew" data-screen-label="All Ears Crew app" style="position: relative; margin-top: clamp(80px, 12vh, 150px); background: linear-gradient(180deg, var(--color-section, #232059), color-mix(in srgb, var(--color-bg) 88%, var(--accent))); border-top: 1px solid var(--color-neutral-700); border-bottom: 1px solid var(--color-neutral-700);">
     <div style="max-width: 1200px; margin: 0 auto; padding: clamp(64px, 10vh, 130px) clamp(20px, 5vw, 56px);">
       <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); border-radius: 999px; padding: 6px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">The app</div>
@@ -296,26 +283,30 @@
         <div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-neutral-600);">
           <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 16%;">
             <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Doors that open themselves</div>
-            <div style="color: var(--color-neutral-200); line-height: 1.55;">Customers book a pickup and the system issues a time-boxed smart-lock door code. The lock validates it offline, so it works even with no internet at the door. This one feature removed the need for staffed handovers entirely.</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Customers pick their own pickup and return time online, then get a time-boxed smart-lock door code by email. The lock validates it offline, and nobody needs to be on site. This one feature removed staffed handovers entirely.</div>
           </div>
           <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 20%;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Safety paperwork that writes itself</div>
-            <div style="color: var(--color-neutral-200); line-height: 1.55;">AI drafts NZ SiteSafe SSSP documents from the job's actual gear, venue and crew. A person always reviews and signs off before anything is sent.</div>
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">A client pack for every job</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Clients see their timings, runsheet and venue plan, answer questions the crew has posted, and upload their own files. The whole job lives in one shared place instead of an email chain.</div>
           </div>
           <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">A warehouse that prints its own labels</div>
-            <div style="color: var(--color-neutral-200); line-height: 1.55;">Queue a label in the app and a small agent in the workshop prints it, unattended. Shipping labels and case labels both.</div>
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Venue plans from a photo</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Upload a photo of any venue's floor plan, set the scale, and lay the show out to the metre. Works on a phone on site, and it's shared with crew and client.</div>
           </div>
           <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 28%;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">An AI teammate with an undo button</div>
-            <div style="color: var(--color-neutral-200); line-height: 1.55;">An AI assistant reads jobs and writes updates back through a tightly scoped integration. Every change is audited, surfaced in the app and reversible in one tap.</div>
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Runsheets and scheduling</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Plan the show timeline once and share it with everyone. Crew see their shifts, accept or decline by email, and the week planner builds itself from the jobs.</div>
           </div>
           <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 32%;">
-            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Venue plans drawn on a phone</div>
-            <div style="color: var(--color-neutral-200); line-height: 1.55;">A to-scale drag-and-drop editor for stages, PA and barriers. Metre-accurate, with an elevation view, and fast on a phone on site.</div>
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">Quote to invoice on one record</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Quote a job, convert the accepted quote into a live booking, invoice it and track what has been paid. Nothing gets re-typed along the way.</div>
+          </div>
+          <div style="padding: 18px 0; border-bottom: 1px solid var(--color-neutral-600); animation: popSm linear both; animation-timeline: view(); animation-range: entry 0% cover 36%;">
+            <div style="font-weight: 600; margin-bottom: 8px; color: var(--color-text);">One system for everything</div>
+            <div style="color: var(--color-neutral-200); line-height: 1.55;">Every piece of gear is tracked across overlapping jobs, and unit20 studio bookings surface in the same calendar, so the two businesses can never double-book each other.</div>
           </div>
           <div style="padding: 18px 0 0; font-size: 12.5px; color: var(--color-neutral-300);">
-            The full technical detail, including the architecture and security model, is in the CV below.
+            The full technical detail, including the architecture and security model, is in the CV.
           </div>
         </div>
       </div>
@@ -333,8 +324,7 @@
         Looking for a graduate software engineering role where the messy, real-world version of the problem is the interesting part: operations, logistics, hardware, live events.
       </p>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px;">
-        <a href="{{ cvUrl }}" download="Will Thompson CV.pdf" class="btn btn-primary" style="font-size: 15px; padding: 12px 22px;">Download CV (PDF) ↓</a>
-        <a href="{{ emailHref }}" class="btn btn-ghost" style="font-size: 15px; padding: 12px 22px;">{{ email }}</a>
+        <a href="{{ emailHref }}" class="btn btn-primary" style="font-size: 15px; padding: 12px 22px;">{{ email }}</a>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: clamp(16px, 3vw, 40px); margin-top: clamp(32px, 5vw, 56px); padding-top: 20px; border-top: 1px solid var(--color-neutral-800); font-size: 12.5px; color: var(--color-neutral-300);">
         <span>021 178 0355</span>
